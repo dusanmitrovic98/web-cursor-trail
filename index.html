@@ -24,3 +24,46 @@
             width: 5px;
             height: 5px;
             border-radius: 50%;
+        }
+
+        .instructions {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="instructions">
+        Move your mouse to interact with the particles!
+    </div>
+    <div class="particle-container">
+    </div>
+    <script>
+        const particleContainer = document.querySelector('.particle-container');
+
+        document.addEventListener('mousemove', (e) => {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+
+            const x = e.clientX;
+            const y = e.clientY;
+
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+
+            particleContainer.appendChild(particle);
+
+            setTimeout(() => {
+                particleContainer.removeChild(particle);
+            }, 2000);
+        });
+    </script>
+</body>
+
+</html>
